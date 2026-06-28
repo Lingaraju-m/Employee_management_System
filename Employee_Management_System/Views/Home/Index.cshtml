@@ -1,8 +1,97 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    // Mock dashboard counts - replace these with your actual Model or ViewBag data later
+    var totalEmployees = 124;
+    var activeLeaves = 5;
+    var openPositions = 3;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Welcome Jumbotron Section -->
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm border-start border-primary border-5">
+    <div class="container-fluid py-2">
+        <h1 class="display-5 fw-bold text-dark">Welcome to StaffSphere</h1>
+        <p class="col-md-8 fs-5 text-muted">
+            The central hub for managing team directories, tracking attendance, processing leave requests, and streamlining organizational workflows.
+        </p>
+        <div class="mt-4">
+            <a href="@Url.Action("Index", "Employee")" class="btn btn-primary btn-lg px-4 me-2 shadow-sm">
+                View Directory
+            </a>
+            <a href="@Url.Action("Create", "LeaveRequest")" class="btn btn-outline-secondary btn-lg px-4">
+                Apply for Leave
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Metrics Dashboard -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm bg-white text-center p-3">
+            <div class="card-body">
+                <div class="text-primary fs-1 mb-2">👥</div>
+                <h5 class="card-title text-muted fw-semibold">Total Workforce</h5>
+                <h2 class="display-6 fw-bold text-dark">@totalEmployees</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm bg-white text-center p-3">
+            <div class="card-body">
+                <div class="text-warning fs-1 mb-2">📅</div>
+                <h5 class="card-title text-muted fw-semibold">On Leave Today</h5>
+                <h2 class="display-6 fw-bold text-dark">@activeLeaves</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm bg-white text-center p-3">
+            <div class="card-body">
+                <div class="text-success fs-1 mb-2">💼</div>
+                <h5 class="card-title text-muted fw-semibold">Open Vacancies</h5>
+                <h2 class="display-6 fw-bold text-dark">@openPositions</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Grid Section -->
+<h3 class="mb-4 text-secondary border-bottom pb-2 fw-bold">Quick Management Actions</h3>
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="p-3 border rounded bg-white shadow-xs">
+            <h5 class="fw-bold text-primary">Add Employee</h5>
+            <p class="text-muted small mb-3">Onboard new hires and set up initial profile parameters.</p>
+            <a href="@Url.Action("Create", "Employee")" class="btn btn-sm btn-link text-decoration-none p-0 fw-bold">
+                Launch Wizard &rarr;
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="p-3 border rounded bg-white shadow-xs">
+            <h5 class="fw-bold text-warning">Leave Approval</h5>
+            <p class="text-muted small mb-3">Review, accept, or reject pending employee leave requests.</p>
+            <a href="@Url.Action("Index", "LeaveRequest")" class="btn btn-sm btn-link text-decoration-none p-0 fw-bold text-warning">
+                Open Portal &rarr;
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="p-3 border rounded bg-white shadow-xs">
+            <h5 class="fw-bold text-success">Department Logs</h5>
+            <p class="text-muted small mb-3">Structure your operational company branches and sectors.</p>
+            <a href="@Url.Action("Index", "Department")" class="btn btn-sm btn-link text-decoration-none p-0 fw-bold text-success">
+                Manage Sectors &rarr;
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="p-3 border rounded bg-white shadow-xs">
+            <h5 class="fw-bold text-danger">Payroll Sync</h5>
+            <p class="text-muted small mb-3">Review salary metrics, financial tier bands, and base compensation.</p>
+            <a href="@Url.Action("Index", "Payroll")" class="btn btn-sm btn-link text-decoration-none p-0 fw-bold text-danger">
+                View Payroll &rarr;
+            </a>
+        </div>
+    </div>
 </div>
